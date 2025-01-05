@@ -1,5 +1,5 @@
 import './App.css';
-import logo from './images/React.png';
+import logo from './images/logo_light.svg'
 
 const tech = "React";
 const face = "😊";
@@ -33,7 +33,7 @@ function App() {
 function Header({tech, year, author}) {
     return (
         <header>
-            <img src={logo} width="450px" alt="React logo"/>
+            <Logo alt="React-Logo"/>
             <h1>Hello {tech.toUpperCase()}!!! {face}</h1>
             <p>Copyright &#169; {year} {author}</p>
         </header>
@@ -51,6 +51,10 @@ function Main({advantages}) {
             </ul>
         </main>
     );
+}
+
+function Logo() {
+    return <img width="170px" src={logo} alt="React logo"/>
 }
 
 export default App
