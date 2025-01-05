@@ -6,7 +6,7 @@ let face = "😊";
 function App() {
     return (
         <>
-            <Header/>
+            <Header tech={tech}/>
             <main>
                 <h2>First steps into React development</h2>
             </main>
@@ -14,10 +14,11 @@ function App() {
     );
 }
 
-function Header() {
+function Header(props) {
+    console.log(props)
     return (
         <header>
-            <h1>Hello {tech.toUpperCase()}!!! {face}</h1>
+            <h1>Hello {props.tech.toUpperCase()}!!! {face}</h1>
         </header>
     );
 }
