@@ -1,4 +1,5 @@
-import './App.css'
+import './App.css';
+import logo from './images/React.png';
 
 const tech = "React";
 const face = "😊";
@@ -32,6 +33,7 @@ function App() {
 function Header({tech, year, author}) {
     return (
         <header>
+            <img src={logo} width="450px" alt="React logo"/>
             <h1>Hello {tech.toUpperCase()}!!! {face}</h1>
             <p>Copyright &#169; {year} {author}</p>
         </header>
