@@ -6,9 +6,18 @@ const author = "C. Molinari";
 const year = 2025;
 
 const advantages = [
-    "Components simplify the development process.",
-    "Widely used technology, it's useful to learn it.",
-    "Easy to learn and use."
+    {
+        id: 1,
+        text: "Components simplify the development process."
+    },
+    {
+        id: 2,
+        text: "Widely used technology, it's useful to learn it."
+    },
+    {
+        id: 3,
+        text: "Easy to learn and use."
+    }
 ];
 
 function App() {
@@ -34,8 +43,8 @@ function Main({advantages}) {
         <main>
             <h2>Advantages of using React:</h2>
             <ul>
-                {advantages.map((advantage, index) => (
-                    <li style={{listStyle: "none"}} key={index}>{advantage}</li>
+                {advantages.map((advantage) => (
+                    <li style={{listStyle: "none"}} key={advantage.id}>{advantage.text}</li>
                 ))}
             </ul>
         </main>
