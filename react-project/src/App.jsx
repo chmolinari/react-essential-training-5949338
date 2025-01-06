@@ -1,6 +1,6 @@
 import './App.css';
 import logo from './images/logo_light.svg'
-import {useReducer} from "react";
+import {useEffect, useReducer} from "react";
 
 const tech = "React";
 const face = "😊";
@@ -71,6 +71,9 @@ function Logo() {
 }
 
 function JobSearchStatus({jobSearchStatus, toggle}) {
+    useEffect(() => {
+        console.log("Job search status changed to: " + displayJobSearchStatusMessage(jobSearchStatus));
+    })
     return (
         <>
             <h2>Job Search Status</h2>
