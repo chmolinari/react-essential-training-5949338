@@ -1,6 +1,6 @@
 import './App.css';
 import logo from './images/logo_light.svg'
-import {useState} from "react";
+import {useReducer} from "react";
 
 const tech = "React";
 const face = "😊";
@@ -9,6 +9,13 @@ const year = 2025;
 const activelySearchingMessage = "Actively searching";
 const notActivelySearchingMessage = "Not actively searching";
 let isSearchingAJob = false;
+const jobSearchState = {
+    ACTIVELY_SEARCHING: "ACTIVELY_SEARCHING",
+    NOT_ACTIVELY_SEARCHING: "NOT_ACTIVELY_SEARCHING"
+};
+const actionType = {
+    TOGGLE_JOB_SEARCH_STATUS: "TOGGLE_JOB_SEARCH_STATUS"
+}
 
 const advantages = [
     {
@@ -26,12 +33,17 @@ const advantages = [
 ];
 
 function App() {
-    const [state, newState] = useState(isSearchingAJob);
+    const [jobSearchStatus, dispatch] = useReducer(reducer, isSearchingAJob);
+
+    function changeJobSearchStatus() {
+        dispatch({type: actionType.TOGGLE_JOB_SEARCH_STATUS});
+    }
+
     return (
         <>
             <Header tech={tech} year="2025" author={author}/>
             <Main advantages={advantages}/>
-            <JobSearchStatus jobSearchState={state} newState={newState}/>
+            <JobSearchStatus jobSearchStatus={jobSearchStatus} toggle={changeJobSearchStatus}/>
         </>
     );
 }
@@ -63,16 +75,16 @@ function Logo() {
     return <img width="170px" src={logo} alt="React logo"/>
 }
 
-function JobSearchStatus({jobSearchState, newState}) {
+function JobSearchStatus({jobSearchStatus, toggle}) {
     return (
         <>
             <h2>Job Search Status</h2>
             <form>
                 <label form="jobSearchStatus">My current job search status is:</label>
                 <input type="text" name="jobSearchStatus" id="jobSearchStatus"
-                       value={jobSearchState ? activelySearchingMessage : notActivelySearchingMessage} readOnly/>
+                       value={jobSearchStatus ? activelySearchingMessage : notActivelySearchingMessage} readOnly/>
                 <button type="button"
-                        onClick={() => newState(toggleJobSearchingState(jobSearchState))}>
+                        onClick={() => toggle()}>
                     Change job search status
                 </button>
             </form>
@@ -82,6 +94,15 @@ function JobSearchStatus({jobSearchState, newState}) {
 
 function toggleJobSearchingState(currentState) {
     return !currentState;
+}
+
+function reducer(state, action) {
+    switch (action.type) {
+        case actionType.TOGGLE_JOB_SEARCH_STATUS:
+            return toggleJobSearchingState(state);
+        default:
+            throw new Error();
+    }
 }
 
 export default App
