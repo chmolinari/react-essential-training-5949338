@@ -5,14 +5,9 @@ import {useReducer} from "react";
 const tech = "React";
 const face = "😊";
 const author = "C. Molinari";
-const year = 2025;
 const activelySearchingMessage = "Actively searching";
 const notActivelySearchingMessage = "Not actively searching";
 let isSearchingAJob = false;
-const jobSearchState = {
-    ACTIVELY_SEARCHING: "ACTIVELY_SEARCHING",
-    NOT_ACTIVELY_SEARCHING: "NOT_ACTIVELY_SEARCHING"
-};
 const actionType = {
     TOGGLE_JOB_SEARCH_STATUS: "TOGGLE_JOB_SEARCH_STATUS"
 }
