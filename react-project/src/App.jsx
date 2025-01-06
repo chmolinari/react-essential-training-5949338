@@ -77,7 +77,7 @@ function JobSearchStatus({jobSearchStatus, toggle}) {
             <form>
                 <label form="jobSearchStatus">My current job search status is:</label>
                 <input type="text" name="jobSearchStatus" id="jobSearchStatus"
-                       value={jobSearchStatus ? activelySearchingMessage : notActivelySearchingMessage} readOnly/>
+                       value={displayJobSearchStatusMessage(jobSearchStatus)} readOnly/>
                 <button type="button"
                         onClick={() => toggle()}>
                     Change job search status
@@ -98,6 +98,10 @@ function reducer(state, action) {
         default:
             throw new Error();
     }
+}
+
+function displayJobSearchStatusMessage(jobSearchStatus) {
+    return jobSearchStatus ? activelySearchingMessage : notActivelySearchingMessage;
 }
 
 export default App
