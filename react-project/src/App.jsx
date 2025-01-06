@@ -6,8 +6,9 @@ const tech = "React";
 const face = "😊";
 const author = "C. Molinari";
 const year = 2025;
-const activelySearchingState = "Actively searching";
-const notActivelySearchingState = "Not actively searching";
+const activelySearchingMessage = "Actively searching";
+const notActivelySearchingMessage = "Not actively searching";
+let isSearchingAJob = false;
 
 const advantages = [
     {
@@ -25,7 +26,7 @@ const advantages = [
 ];
 
 function App() {
-    const [state, newState] = useState(notActivelySearchingState);
+    const [state, newState] = useState(isSearchingAJob);
     return (
         <>
             <Header tech={tech} year="2025" author={author}/>
@@ -68,7 +69,8 @@ function JobSearchStatus({jobSearchState, newState}) {
             <h2>Job Search Status</h2>
             <form>
                 <label form="jobSearchStatus">My current job search status is:</label>
-                <input type="text" name="jobSearchStatus" id="jobSearchStatus" value={jobSearchState} readOnly/>
+                <input type="text" name="jobSearchStatus" id="jobSearchStatus"
+                       value={jobSearchState ? activelySearchingMessage : notActivelySearchingMessage} readOnly/>
                 <button type="button"
                         onClick={() => newState(toggleJobSearchingState(jobSearchState))}>
                     Change job search status
@@ -79,8 +81,7 @@ function JobSearchStatus({jobSearchState, newState}) {
 }
 
 function toggleJobSearchingState(currentState) {
-    if (currentState === notActivelySearchingState) return activelySearchingState;
-    return notActivelySearchingState;
+    return !currentState;
 }
 
 export default App
