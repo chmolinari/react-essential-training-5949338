@@ -42,6 +42,9 @@ function Header() {
                         <Link href="/work">Work with us</Link>
                     </div>
                     <div>
+                        <Link href="/contacts">Contacts</Link>
+                    </div>
+                    <div>
                         <Link href="/about">About</Link>
                     </div>
                 </nav>
