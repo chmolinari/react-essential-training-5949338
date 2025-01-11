@@ -32,11 +32,14 @@ export default function RootLayout({children}) {
 
 function Header() {
     return (
-        <header>
-            <div>
-                <nav>
-                    <div>
+        <header class="bg-slate-500 py-4">
+            <div class="container mx-auto px-4">
+                <nav class="flex items-center justify-between">
+                    <div className="flex items-center">
                         <Link href="/">Home</Link>
+                    </div>
+                    <div>
+                        <Link href="/work">Work with us</Link>
                     </div>
                     <div>
                         <Link href="/about">About</Link>
